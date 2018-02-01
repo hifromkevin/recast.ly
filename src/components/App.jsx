@@ -1,10 +1,11 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-    
+    this.getSearchResult = this.getSearchResult.bind(this);
+
     this.state = {
       currentVideo: this.props.videos[0],
-      videoList: null
+      videoList: this.props.videos
     };
   }
 
@@ -15,13 +16,17 @@ class App extends React.Component {
   }
 
   getSearchResult (options) {
-    window.searchYouTube(options, function(data) {
+    window.searchYouTube(options, (data) => {
       this.setState({
         currentVideo: data.items[0],
         videoList: data.items
       });
     });
     
+  }
+
+  componentDidMount () {
+  
   }
 
   render() {
@@ -38,7 +43,7 @@ class App extends React.Component {
         <div className="col-md-5">
           <div>
             <VideoList 
-              videos={this.props.videos} 
+              videos={this.state.videoList} 
               listClick={this.currentPlayingVideo.bind(this)}
             />
           </div>

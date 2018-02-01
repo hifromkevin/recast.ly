@@ -10,7 +10,7 @@ var searchYouTube = (options, callback) => {
   }; 
 
   $.ajax({
-    url: 'https://googleapis.com/youtube/v3/search',
+    url: 'https://www.googleapis.com/youtube/v3/search',
     type: 'GET',
     data: myInput,
     dataType: 'json',
@@ -24,4 +24,4 @@ var searchYouTube = (options, callback) => {
   
 };
 
-window.searchYouTube = searchYouTube;
+window.searchYouTube = _.debounce(searchYouTube, 500);

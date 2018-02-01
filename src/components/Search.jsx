@@ -1,11 +1,25 @@
 var Search = (props) => (
-  <div className="search-bar form-inline">
+  <form 
+    className="search-bar form-inline"
+    onSubmit={function(e) { 
+      e.preventDefault(); 
+      var searchString = $('input').val();
+      var options = {
+        query: searchString,
+        max: 5,
+        key: window.YOUTUBE_API_KEY
+      };
+      $('input').val('');
+      props.getSearchResult(options);
+    }
+    }
+  >
     <input 
       className="form-control" 
       type="text" 
       onChange={
         function() {
-          var searchString = 'Talking Dogs';
+          var searchString = $('input').val();
           var options = {
             query: searchString,
             max: 5,
@@ -15,10 +29,10 @@ var Search = (props) => (
         }
       } 
     />
-    <button className="btn hidden-sm-down">
+    <button className="btn hidden-sm-down" type="submit" >
       <span className="glyphicon glyphicon-search"></span>
     </button>
-  </div> 
+  </form> 
 );
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
