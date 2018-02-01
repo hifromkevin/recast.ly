@@ -1,16 +1,17 @@
-var Search = () => (
+var Search = (props) => (
   <div className="search-bar form-inline">
     <input 
       className="form-control" 
       type="text" 
-      onKeyUp={
+      onChange={
         function() {
-          var searchString = this.$('input').val();
+          var searchString = 'Talking Dogs';
           var options = {
             query: searchString,
             max: 5,
             key: window.YOUTUBE_API_KEY
-          };  
+          };
+          props.getSearchResult(options);
         }
       } 
     />

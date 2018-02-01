@@ -12,7 +12,7 @@ var searchYouTube = (options, callback) => {
   $.ajax({
     url: 'https://googleapis.com/youtube/v3/search',
     type: 'GET',
-    data: _.merge(myInput, options),
+    data: myInput,
     dataType: 'json',
     success: function(data) {
       callback(data);

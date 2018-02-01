@@ -1,7 +1,7 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       currentVideo: this.props.videos[0],
       videoList: null
@@ -14,11 +14,21 @@ class App extends React.Component {
     });
   }
 
+  getSearchResult (options) {
+    window.searchYouTube(options, function(data) {
+      this.setState({
+        currentVideo: data.items[0],
+        videoList: data.items
+      });
+    });
+    
+  }
+
   render() {
     return (<div>
       <nav className="navbar">
         <div className="col-md-6 offset-md-3">
-          <div><Search/></div>
+          <div><Search getSearchResult={this.getSearchResult}/></div>
         </div>
       </nav>
       <div className="row">
