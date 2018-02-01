@@ -1,6 +1,19 @@
 var Search = () => (
   <div className="search-bar form-inline">
-    <input className="form-control" type="text" />
+    <input 
+      className="form-control" 
+      type="text" 
+      onKeyUp={
+        function() {
+          var searchString = this.$('input').val();
+          var options = {
+            query: searchString,
+            max: 5,
+            key: window.YOUTUBE_API_KEY
+          };  
+        }
+      } 
+    />
     <button className="btn hidden-sm-down">
       <span className="glyphicon glyphicon-search"></span>
     </button>
