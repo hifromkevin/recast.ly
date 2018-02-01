@@ -23,5 +23,14 @@
     "chai": "^3.5.0",
     "mocha": "2.3.3",
     "sinon": "1.17.3"
-  }
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hifromkevin/hrsf90-recast.ly.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hifromkevin/hrsf90-recast.ly/issues"
+  },
+  "homepage": "https://github.com/hifromkevin/hrsf90-recast.ly#readme"
 }
